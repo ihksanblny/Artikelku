@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+// Hakim - Controller akses publik
+use App\Http\Controllers\FrontendController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,3 +31,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Hakim
+// Homepage /artikel publik
+Route::get('/home', [FrontendController::class, 'index'])->name('frontend.index');
