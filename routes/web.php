@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 // Hakim - Controller akses publik
 use App\Http\Controllers\FrontendController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Hakim
+// Homepage /artikel publik
+Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +31,3 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// Hakim
-// Homepage /artikel publik
-Route::get('/home', [FrontendController::class, 'index'])->name('frontend.index');
